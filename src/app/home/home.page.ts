@@ -16,6 +16,7 @@ export class HomePage {
   async loadContacts(){
     try{
     const result = await ContactsPlugin.getContacts();
+    console.log("Resultado completo del plugin:", JSON.stringify(result, null, 2));
     console.log("Resultado del plugin", result);
       this.contacts = result?.contacts?.map((c: any)=>({
         name: c.name??'',
