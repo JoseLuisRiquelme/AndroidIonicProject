@@ -18,10 +18,10 @@ export class HomePage {
     const result = await ContactsPlugin.getContacts();
     console.log("Resultado completo del plugin:", JSON.stringify(result, null, 2));
     console.log("Resultado del plugin", result);
-      this.contacts = result?.contacts?.map((c: any)=>({
-        name: c.name??'',
-        number: c.number??''
-      })) ??[];
+    this.contacts = result?.contacts?.map((c: any) => ({
+  name: c.name ?? '',
+  number: c.phones?.[0] ?? ''
+})) ?? [];
       console.log('Contacts:',this.contacts)
     }catch(err){
       console.error('Error obteniendo contactos desde js:', err);
