@@ -8,17 +8,13 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <ion-button (click)="loadContacts()">Cargar Contactos</ion-button>
-  @if (contacts.length>0) {
-<ion-list>
-  @for (contact of contacts; track contact){
-<ion-item >
-    <ion-label>
-      <h2>{{contact.name}}</h2>
-      <p>{{contact.number}}</p>
-    </ion-label>
-  </ion-item>
- 
-  }
+  <ion-button (click)="openNativeView()"> Abrir vista nativa</ion-button>
+  <ion-list *ngIf="contacts.length > 0">
+    <ion-item *ngFor="let contact of contacts">
+      <ion-label>
+        <h2>{{ contact.name }}</h2>
+        <p>{{ contact.number }}</p>
+      </ion-label>
+    </ion-item>
   </ion-list>
-  }
 </ion-content>
