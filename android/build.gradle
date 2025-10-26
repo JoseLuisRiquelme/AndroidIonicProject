@@ -1,8 +1,13 @@
 // build.gradle (nivel raíz)
+//buildscript {
+//  dependencies {
+//    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0" // o tu versión actual
+//  }
+//}
 
 plugins {
-  id 'com.android.application' version '8.7.2' apply false
-  id 'com.android.library' version '8.7.2' apply false
+  alias(myLibs.plugins.android.library) apply false
+  alias(myLibs.plugins.kotlin.android) apply false
   id 'com.google.gms.google-services' version '4.4.2' apply false
 }
 
