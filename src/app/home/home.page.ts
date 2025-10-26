@@ -4,6 +4,19 @@ import { CommonModule } from '@angular/common';
 import {registerPlugin} from '@capacitor/core';
 const ContactsPlugin = registerPlugin<any>('ContactsPlugin');
 
+// Define interfaces
+interface Contact {
+  name: string;
+  number: string;
+}
+
+interface ContactPluginResult {
+  contacts?: {
+    name?: string;
+    phones?: string[];
+  }[];
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -13,17 +26,16 @@ const ContactsPlugin = registerPlugin<any>('ContactsPlugin');
 })
 export class HomePage {
   // openNativeView(): open a native UI provided by the Capacitor plugin
-  async openNativeView({ username }: { username?: string } = { username: 'Jose Luis' }) {
-    const user = username ?? 'Jose Luis';
+  async openNativeView(): Promise<void> {
     if (ContactsPlugin?.openNativeView) {
-      await ContactsPlugin.openNativeView({ username: user });
+      await ContactsPlugin.openNativeView();
     } else {
       console.warn('ContactsPlugin.openNativeView is not available');
     }
   }
 
   // contacts list used by the template
-  contacts: { name: string; number: string }[] = [];
+  contacts: Contact[] = [];
 
   constructor() {}
 
